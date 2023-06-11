@@ -1,17 +1,16 @@
-import { ChangeEvent, useEffect, useState } from "react";
+'use client'
+
+import {  useEffect, useState } from "react";
 import { HiMapPin, HiOutlinePencil } from "react-icons/hi2";
 import { toast } from "react-hot-toast";
 
 const LocationSearchForm = () => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState(false);
 
-  const [location, setLocation] = useState<{
-    latitude: number;
-    longitude: number;
-  } | null>(null);
+  const [location, setLocation] = useState(null);
 
   const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<Array<{ place_name: string }>>(
+  const [suggestions, setSuggestions] = useState(
     []
   );
 
@@ -64,7 +63,7 @@ const LocationSearchForm = () => {
       // Geolocation is not supported
       toast.error("Geolocation is not supported by this browser.");
     }
-  }, []);
+  }, [setLocation]);
 
   // Set location and save on local storage based on User granting location permission
   useEffect(() => {
@@ -84,7 +83,7 @@ const LocationSearchForm = () => {
 
   /*Forward geocoding */
   /* Look for location name being queried by user */
-  const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = async (event) => {
     try {
       setQuery(event.target.value);
       const endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${event.target.value}.json?proximity=-33.9249,18.4241&country=ZA&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}&autocomplete=true`;
@@ -94,13 +93,13 @@ const LocationSearchForm = () => {
       // console.log(results);
       setSuggestions(results?.features);
       //  console.log(suggestions);
-    } catch (error: any) {
+    } catch (error) {
       console.log("Error fetching data: " + error.message);
     }
   };
 
   /* Display location selected by User  */
-  const handleSelectAddress = (selectedAddress: string) => {
+  const handleSelectAddress = (selectedAddress) => {
     localStorage.setItem("delivery_address", selectedAddress);
     setQuery(selectedAddress);
     setSuggestions([]);

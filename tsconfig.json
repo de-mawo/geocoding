@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/LocationSearchForm.js", "app/layout.js", "app/page.js", "app/cart/CartList.js", "app/cart/CartSummary.js", "app/components/Header.js", "app/cart/page.js", "app/components/HotToast.js", "app/components/LocationBtn.js"],
   "exclude": ["node_modules"]
 }
