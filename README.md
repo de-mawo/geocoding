@@ -1,0 +1,1 @@
+## This is a Mapbox geocoding react component
