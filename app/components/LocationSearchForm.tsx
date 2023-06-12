@@ -1,3 +1,5 @@
+'use client'
+
 import { ChangeEvent, useEffect, useState } from "react";
 import { HiMapPin, HiOutlinePencil } from "react-icons/hi2";
 import { toast } from "react-hot-toast";
@@ -53,7 +55,7 @@ const LocationSearchForm = () => {
             askForLocationPermission();
           } else if (result.state === "denied") {
             // Permission denied, handle accordingly
-            toast.error("Location access denied by the user.");
+            toast.error("Location access denied by the user.",{ duration: 1000});
           }
         })
         .catch((error) => {
@@ -62,7 +64,7 @@ const LocationSearchForm = () => {
         });
     } else {
       // Geolocation is not supported
-      toast.error("Geolocation is not supported by this browser.");
+      toast.error("Geolocation is not supported by this browser.",{ duration: 1000});
     }
   }, []);
 
