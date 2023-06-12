@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
 import { Fragment, useState } from "react";
-import {  HiMapPin } from "react-icons/hi2";
+import { HiMapPin } from "react-icons/hi2";
 import { FaChevronRight } from "react-icons/fa";
 import { Dialog, Transition } from "@headlessui/react";
 import LocationSearchForm from "./LocationSearchForm";
@@ -9,8 +9,6 @@ import LocationSearchForm from "./LocationSearchForm";
 const LocationBtn = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showChange, setShowChange] = useState(false);
-  const deliveryAddress  =   typeof window !== "undefined" && localStorage?.getItem("delivery_address");
- 
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => {
@@ -34,7 +32,7 @@ const LocationBtn = () => {
             "truncate max-w-[8rem]  text-sm text-gray-500 md:max-w-[12rem]"
           }
         >
-          {deliveryAddress  ? deliveryAddress  : "Enter Delivery Address"}
+          Enter Delivery Address
         </span>
         <FaChevronRight className=" shrink-0 text-green-600" />
       </button>
@@ -80,10 +78,8 @@ const LocationBtn = () => {
                     <div className="flex items-center mt-8 justify-between">
                       <div>
                         <p className="truncate max-w-[10rem] md:max-w-xs">
-                          {deliveryAddress 
-                            ? deliveryAddress 
-                            : "Click change..."}
-                        </p>{" "}
+                          Click change...
+                        </p>
                       </div>
 
                       <div>
