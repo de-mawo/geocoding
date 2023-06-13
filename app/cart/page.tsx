@@ -5,8 +5,7 @@ import Link from "next/link";
 const Cart = () => {
   return (
     <>
-    
-      <div className="flex flex-col items-center justify-center   py-8 px-6 mb-24">
+      <div className="flex flex-col items-center justify-center   py-8 px-6 mb-24 bg-white">
         <div className="w-full  rounded-lg shadow-xl sm:max-w-md   p-6">
           <div>
             <h1 className="text-xl text-center my-5  leading-tight tracking-tight text-gray-500 md:text-2xl ">

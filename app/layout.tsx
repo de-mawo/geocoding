@@ -1,25 +1,22 @@
-
-import HotToast from './components/HotToast'
-import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import HotToast from "./components/HotToast";
+import "./globals.css";
 
 export const metadata = {
-  title: 'Geo Coding',
-  description: 'Mapbox react places autocomplete',
-}
+  title: "Geo Coding",
+  description: "Mapbox react places autocomplete",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <HotToast/>
-        {children}</body>
+      <body className="bg-slate-200">
+        <HotToast />
+        {children}
+      </body>
     </html>
-  )
+  );
 }
