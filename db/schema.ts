@@ -5,6 +5,7 @@ export const stores = pgTable(
   {
     id: text("id").primaryKey(),
     name: text("name").notNull(),
+    image: text("image").notNull().default("/store.jpeg"),
     address: text("address").notNull(),
     country: text("country").notNull(),
     city: text("city").notNull(),

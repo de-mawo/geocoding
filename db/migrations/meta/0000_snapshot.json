@@ -1,5 +1,5 @@
 {
-  "id": "f52a0592-30f4-407f-be36-bc698fd039e9",
+  "id": "967534eb-87a9-4dec-8074-1de2a22dc1d8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -19,6 +19,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'/store.jpeg'"
         },
         "address": {
           "name": "address",

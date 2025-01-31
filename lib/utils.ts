@@ -17,4 +17,5 @@ export function generateUniqueId(length: number = 21): string {
     .slice(0, length);
 }
 
-console.log(generateUniqueId(12)); // Example output: "3xq0zg5by19d"
+
+

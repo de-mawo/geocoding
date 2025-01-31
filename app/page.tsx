@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { getNearestStores } from "@/db/queries/stores";
-import { Store, StoresResponse } from "@/types/store";
+import type { Store, StoresResponse } from "@/types/store";
 import StoreLocator from "./components/store-locator";
 
 export default async function Home({
@@ -29,7 +30,7 @@ export default async function Home({
     const response: StoresResponse = await getNearestStores(
       latitude,
       longitude,
-      10,
+      5,
       maxDistance
     );
     if (Array.isArray(response)) {
@@ -46,12 +47,26 @@ export default async function Home({
       {error ? (
         <p className="text-red-500">{error}</p>
       ) : stores.length > 0 ? (
-        <ul className="space-y-4">
+        <ul className="space-y-4 w-full max-w-2xl">
           {stores.map((store) => (
-            <li key={store.id} className="border p-4 rounded-md">
-              <h2 className="font-semibold">{store.name}</h2>
-              <p>{store.address}</p>
-              <p>Distance: {(store.distance / 1000).toFixed(2)} km</p>
+            <li
+              key={store.id}
+              className="border p-4 rounded-md flex items-center space-x-4"
+            >
+              <div className="flex-shrink-0">
+                <Image
+                  src={store.image || "/placeholder.svg"}
+                  alt={store.name}
+                  width={100}
+                  height={100}
+                  className="rounded-md object-cover"
+                />
+              </div>
+              <div>
+                <h2 className="font-semibold">{store.name}</h2>
+                <p>{store.address}</p>
+                <p>Distance: {(store.distance / 1000).toFixed(2)} km</p>
+              </div>
             </li>
           ))}
         </ul>

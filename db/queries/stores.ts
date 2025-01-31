@@ -19,6 +19,7 @@ export async function getNearestStores(
       .select({
         id: stores.id,
         name: stores.name,
+        image: stores.image,
         address: stores.address,
         distance: sql<number>`ST_DistanceSphere(${stores.location}, ${userLocation})::float`,
         longitude: sql<number>`ST_X(${stores.location})::float`,
@@ -27,9 +28,7 @@ export async function getNearestStores(
       .from(stores);
 
     const filteredQuery = maxDistance
-      ? baseQuery.where(
-          sql`ST_DWithin(${stores.location}, ${userLocation}, ${maxDistance})`
-        )
+      ? baseQuery.where(sql`${sql<number>`ST_DistanceSphere(${stores.location}, ${userLocation})`} <= ${maxDistance}`)
       : baseQuery;
 
     const res = await filteredQuery

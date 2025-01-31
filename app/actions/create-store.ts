@@ -2,11 +2,11 @@
 
 import { db } from "@/db";
 import { stores } from "@/db/schema";
+import { generateRandomStoreName } from "@/lib/generate-store-name";
 import { generateUniqueId } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 
 export async function saveStore(
-  name: string,
   address: string,
   country: string,
   city: string,
@@ -17,7 +17,8 @@ export async function saveStore(
     const id = generateUniqueId();
     const res = await db.insert(stores).values({
       id,
-      name,
+      name: generateRandomStoreName(),
+      image: "/store.jpeg",
       address,
       country,
       city,

@@ -40,7 +40,6 @@ export default function AddressSearch() {
       suggestion.context.find((c: any) => c.id.startsWith("place"))?.text || "";
 
     setSelectedPlace({
-      name: suggestion.text,
       address: suggestion.place_name,
       country,
       city,
@@ -52,7 +51,6 @@ export default function AddressSearch() {
   const handleSaveStore = async () => {
     if (selectedPlace) {
       const result = await saveStore(
-        selectedPlace.name,
         selectedPlace.address,
         selectedPlace.country,
         selectedPlace.city,
@@ -60,7 +58,7 @@ export default function AddressSearch() {
         selectedPlace.longitude
       );
       console.log(result);
-      
+
       if (result.success) {
         alert("Store saved successfully!");
         setAddress("");
