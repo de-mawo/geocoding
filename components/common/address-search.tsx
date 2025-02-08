@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { saveStore } from "../actions/create-store";
+import { toast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
+import { saveStore } from "@/app/actions/create-store";
 
 export default function AddressSearch() {
   const [address, setAddress] = useState("");
@@ -57,14 +59,19 @@ export default function AddressSearch() {
         selectedPlace.latitude,
         selectedPlace.longitude
       );
-      console.log(result);
 
       if (result.success) {
-        alert("Store saved successfully!");
+        toast({
+          title: "Store saved successfully! ",
+          description: "Store saved successfully!",
+        });
         setAddress("");
         setSelectedPlace(null);
       } else {
-        alert("Failed to save store. Please try again.");
+        toast({
+          title: "Failed to save store. ",
+          description: "Failed to save store. Please try again.",
+        });
       }
     }
   };
@@ -104,13 +111,13 @@ export default function AddressSearch() {
           <p>Longitude: {selectedPlace.longitude}</p>
         </div>
       )}
-      <button
+      <Button
         onClick={handleSaveStore}
         disabled={!selectedPlace}
-        className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+        className="w-full"
       >
         Save Store
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { getNearestStores } from "@/db/queries/stores";
 import type { Store, StoresResponse } from "@/types/store";
-import StoreLocator from "./components/store-locator";
+import StoreLocator from "../components/common/store-locator";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function Home({
   searchParams,
@@ -42,6 +44,11 @@ export default async function Home({
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
+      <Button asChild >
+        <Link href="/add" className="flex my-4 text-3xl items-center space-x-2">
+          Add Store
+        </Link>
+      </Button>
       <h1 className="text-2xl font-bold mb-4">Nearby Stores</h1>
       <StoreLocator />
       {error ? (

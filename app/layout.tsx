@@ -1,4 +1,4 @@
-import HotToast from "./components/HotToast";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 export const metadata = {
@@ -13,9 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-slate-200">
-        <HotToast />
+      <body className="">
         {children}
+        <Toaster />
       </body>
     </html>
   );
