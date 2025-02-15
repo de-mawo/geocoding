@@ -44,11 +44,11 @@ export default async function Home({
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <Button asChild >
+     
         <Link href="/add" className="flex my-4 text-3xl items-center space-x-2">
-          Add Store
+          Add a Store
         </Link>
-      </Button>
+    
       <h1 className="text-2xl font-bold mb-4">Nearby Stores</h1>
       <StoreLocator />
       {error ? (
