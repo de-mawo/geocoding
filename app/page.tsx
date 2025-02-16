@@ -2,7 +2,6 @@ import Image from "next/image";
 import { getNearestStores } from "@/db/queries/stores";
 import type { Store, StoresResponse } from "@/types/store";
 import StoreLocator from "../components/common/store-locator";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function Home({
